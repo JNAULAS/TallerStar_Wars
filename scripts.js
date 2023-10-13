@@ -1,52 +1,20 @@
 const API = 'https://swapi.dev/api/people/'
 
 function personaje(id,persona) {
-    // Obtener una referencia al elemento contenedor de la tabla en el DOM
-    const tableContainer = document.getElementById("table-container");
+    let div = document.createElement('div')
+    let h1_texto = document.createTextNode(id + " "+persona.name)
+    let h1 = document.createElement('h1')
+    //let h2 = document.createElement('h2')
+    //let h2_texto = document.createTextNode(API +id)
+    h1.appendChild(h1_texto)
+    //h2.appendChild(h2_texto)
+    div.appendChild(h1)
+    //div.appendChild(h2)
 
-    // Crear una tabla
-    const table = document.createElement("table");
-
-    // Crear la cabecera de la tabla
-    const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
-
-    // Definir las columnas de la cabecera
-    //const headers = ["Codigo","Nombre", "Height", "Mass", "Gender", "Birth Year"];
-    const headers = ["Codigo","Nombre"];
-
-    // Crear las celdas de la cabecera
-    headers.forEach(headerText => {
-        const headerCell = document.createElement("th");
-        headerCell.textContent = headerText;
-        headerRow.appendChild(headerCell);
-    });
-
-    // Agregar la fila de cabecera a la cabecera de la tabla
-    thead.appendChild(headerRow);
-
-    // Agregar la cabecera a la tabla
-    table.appendChild(thead);
-    const dataRow = document.createElement("tr");
-
-    // Crear celdas de datos
-    const idCell = document.createElement("td");
-    idCell.textContent = id;
-
-    const nameCell = document.createElement("td");
-    nameCell.textContent = persona.name;
-
-  
-
-    // Agregar celdas de datos a la fila de datos
-    dataRow.appendChild(idCell);
-    dataRow.appendChild(nameCell);
-   
-
-    // Agregar la fila de datos a la tabla
-    table.appendChild(dataRow);
-    tableContainer.appendChild(table);
+    let contenedor = document.getElementById('contenedor')
+    contenedor.appendChild( div )
 }
+
 
 function obtener_personaje(id) {
     return new Promise((resolve, reject) => {
